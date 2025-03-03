@@ -1,0 +1,6 @@
+@FoodiesHaven_HostAddress = http://localhost:5137
+
+GET {{FoodiesHaven_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
