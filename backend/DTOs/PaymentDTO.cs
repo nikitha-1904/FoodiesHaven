@@ -2,6 +2,8 @@
 {
     public class PaymentDTO
     {
+        public int PaymentId { get; set; } // Add this line
+
         public string PaymentMode { get; set; }
         public string CardNo { get; set; }
         public string ExpiryDate { get; set; }
@@ -10,6 +12,8 @@
         public string Username { get; set; }
         public int UserId { get; set; }
         public decimal FinalAmount { get; set; }
+        public string PaymentStatus { get; set; } // Add this line
+
     }
 
     public class PaymentResultDTO //after payment we get the response
@@ -32,6 +36,6 @@
         public string CardNo { get; set; }
         public string ExpiryDate { get; set; }
         public string UPIId { get; set; }
-    } 
+    }
 
 }

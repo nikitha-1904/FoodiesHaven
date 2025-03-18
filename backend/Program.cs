@@ -11,6 +11,19 @@ using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args); //creates instance to configure and build the web application.
 
+// For Cors for the frontend
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:4200")
+                   .AllowAnyMethod()
+                   .AllowAnyHeader()
+                   .AllowCredentials();
+        });
+});
+
 // Add services to the container.
 builder.Services.AddControllers() // Adds services for controllers to the dependency injection container.
     .AddJsonOptions(options =>
@@ -83,6 +96,13 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 //to build web appilication
+// For static data, routing and CORS
+
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseCors("AllowAllOrigins");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

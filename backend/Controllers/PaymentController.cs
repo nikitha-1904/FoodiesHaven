@@ -250,42 +250,37 @@ namespace FoodiesHaven.Controllers
             _context = context;
         }
 
-        // GET: api/Payment
         [HttpGet]
         [Authorize(Roles = "admin")]
         public async Task<ActionResult<IEnumerable<PaymentDTO>>> GetPayments()
         {
-        //Usage: When you want to retrieve all payments from the database immediately.
-           //Execution: Executes the query and loads all data into memory right away.
-
-        var payments = await _context.Payments 
+            var payments = await _context.Payments
                 .Select(p => new PaymentDTO
                 {
+                    PaymentId = p.PaymentId, // Add this line
                     PaymentMode = p.PaymentMode,
                     CardNo = p.CardNo,
                     ExpiryDate = p.ExpiryDate,
                     UPIId = p.UPIId,
                     Username = p.User.Username,
                     UserId = p.UserId,
-                    FinalAmount = p.FinalAmount
+                    FinalAmount = p.FinalAmount,
+                    PaymentStatus = p.PaymentStatus
                 }).ToListAsync();
 
             return Ok(payments);
         }
 
-        // GET: api/Payment/filter
         [HttpGet("filter")]
         [Authorize(Roles = "admin,user")]
         public async Task<ActionResult<IEnumerable<PaymentDTO>>> GetFilteredPayments(string paymentMode, string username, string status)
         {
-            // Validate payment mode
             var validPaymentModes = new List<string> { "cash", "card", "upi" };
             if (!string.IsNullOrEmpty(paymentMode) && !validPaymentModes.Contains(paymentMode.ToLower()))
             {
                 return BadRequest("Invalid payment mode. Valid payment modes are cash, card, upi.");
             }
 
-            // Validate username
             if (!string.IsNullOrEmpty(username))
             {
                 var userExists = await _context.User.AnyAsync(u => u.Username == username);
@@ -295,17 +290,14 @@ namespace FoodiesHaven.Controllers
                 }
             }
 
-            // Validate status
             var validStatuses = new List<string> { "successful", "pending" };
             if (!string.IsNullOrEmpty(status) && !validStatuses.Contains(status.ToLower()))
             {
                 return BadRequest("Invalid status. Valid statuses are successful, pending.");
             }
 
-            var query = _context.Payments.AsQueryable(); //Queries are not executed until you enumerate over the results ot immediate. This allows for more efficient query execution and resource usage.
-         //Usage: When you want to build a query dynamically and apply filters before executing it.
-        //Execution: Defers execution until the query is enumerated, allowing for efficient database operations.
-                    if (!string.IsNullOrEmpty(paymentMode))
+            var query = _context.Payments.AsQueryable();
+            if (!string.IsNullOrEmpty(paymentMode))
             {
                 query = query.Where(p => p.PaymentMode == paymentMode);
             }
@@ -323,13 +315,15 @@ namespace FoodiesHaven.Controllers
             var payments = await query
                 .Select(p => new PaymentDTO
                 {
+                    PaymentId = p.PaymentId, // Add this line
                     PaymentMode = p.PaymentMode,
                     CardNo = p.CardNo,
                     ExpiryDate = p.ExpiryDate,
                     UPIId = p.UPIId,
                     Username = p.User.Username,
                     UserId = p.UserId,
-                    FinalAmount = p.FinalAmount
+                    FinalAmount = p.FinalAmount,
+                    PaymentStatus = p.PaymentStatus
                 }).ToListAsync();
 
             return Ok(payments);

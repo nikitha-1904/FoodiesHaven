@@ -24,7 +24,6 @@ namespace FoodiesHaven.Controllers
         public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProducts()
         {
             var products = await _context.Products.Include(p => p.Category)
-                .Where(p => p.IsActive && p.Category.IsActive)
                 .Select(p => new ProductDTO
                 {
                     ProductId = p.ProductId,
