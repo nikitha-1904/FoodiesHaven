@@ -1,0 +1,160 @@
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* Center the buttons */
+    width: 100%; /* Full width to center properly */
+    gap: 15px;
+    margin-top: 20px; /* Add some top margin for spacing */
+}
+
+.menu button {
+    margin: 10px 0;
+    padding: 10px 20px; /* Adjust padding for better appearance */
+    font-size: 15px;
+    cursor: pointer;
+    color: white; /* Button text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+
+
+.categories {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 40px;
+}
+
+.categories span {
+    cursor: pointer;
+    padding: 10px 10px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+}
+
+.categories .selected {
+    background-color: #333;
+    color: white;
+}
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    padding-bottom: 40px; /* Add padding to prevent overlap with footer */
+  }
+
+  .product-card {
+    position: relative;
+    display: inline-block; /* Ensure the card is inline-block to contain the icon */
+    width: 180px; /* Adjust width as needed */
+    border: 1px solid #ccc; /* Optional: Add border for better visibility */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better appearance */
+  }
+.product-card img {
+    width: 100%;
+    height: 120px;
+    border-radius: 5px;
+    margin-bottom: 0; /* Remove bottom margin */
+    display: block; /* Ensure no extra space below the image */
+    border-top-left-radius: 10px; /* Added for curved effect at the top */
+    border-top-right-radius: 10px; /* Added for curved effect at the top */
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+}
+.product-card.inactive {
+    background-color: #f9f9f9; /* Light pale background */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.5); /* White shadow */
+    opacity: 0.2; /* Slightly transparent */
+  }
+.product-card h3 {
+    margin: 10px 0;
+    font-size: 16px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+}
+.product-card p {
+    margin: 5px 0;
+    font-size: 12px;
+}
+.card-info {
+    background-color: #333; /* Black background */
+    color: white; /* White text */
+    padding: 5px; /* Optional: Add some padding for better readability */
+    border-radius: 5px; /* Optional: Add some border-radius for rounded corners */
+    height:120px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-bottom-left-radius: 10px; /* Add bottom left radius */
+    border-bottom-right-radius: 10px; /* Add bottom right radius */
+}
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 30px; /* Increased width */
+    height: 15px; /* Increased height */
+    bottom:28px;
+    left:50px;
+  }
+  
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: red;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 15px; /* Increased height */
+    width: 15px; /* Increased width */
+    left: 2px; /* Adjusted position */
+    bottom: 1px; /* Adjusted position */
+    background-color: white;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: green;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(10px); /* Adjusted for new size */
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+   border-radius: 10px; /* Adjusted for new size */
+  }
+  
+  .slider.round:before {
+    border-radius: 50%; /* Ensures it remains round */
+  }
+ 
+.cart-icon {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background-color: #ffcc00; /* Adjust color as needed */
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+  }

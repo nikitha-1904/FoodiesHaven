@@ -1,0 +1,79 @@
+ /* General Styles */
+ body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  /* Header Styles */
+  .header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    width:100vw;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    
+  }
+
+  .header h1 {
+    margin: 0;
+    font-size: 26px;
+    font-family: 'Bubblegum Sans', sans-serif; /* Use Bubblegum Sans font */
+    position: relative;
+    left: 50px;
+  }
+
+  .header .foodie {
+    color: white;
+  }
+
+  .header .haven {
+    color: rgb(251, 251, 79);
+  }
+
+  .header nav {
+    display: flex;
+    gap: 35px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    right:20px;
+  }
+
+  .header nav a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+
+  .header nav a:hover {
+    color: rgba(246, 255, 0, 0.76);
+    
+  }
+
+  /* Footer Styles */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    position: fixed;
+    bottom: 0;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    z-index: 6;
+
+
+  }
+
+  .header nav a.active {
+    color: rgb(251, 251, 79); /* Yellow color */
+    font-weight: bold; /* Bold text */
+}

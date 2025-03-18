@@ -1,0 +1,142 @@
+.coupon-content {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .coupon-list {
+    flex: 1;
+  }
+  
+  .coupon-cards {
+    display: flex;
+    flex-direction: column; /* Ensure cards are in one column */
+    gap: 15px;
+  }
+  
+  .coupon-card {
+    background-color: #f9f9f9ee;
+    padding: 20px;
+    width: 250px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 13px;
+    border: 1.5px solid #ccc;
+    border-radius: 13px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+    position: relative;
+    z-index: 1; /* Ensure the card is above other elements */
+    margin-top: 20px;
+    left:120px;
+  }
+  
+  .coupon-card h3 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 17px;
+  }
+  
+  .coupon-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+  }
+  
+  .coupon-card.inactive {
+    background-color: #ffffff; /* Light pale background */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* White shadow */
+    opacity: 0.2; /* Slightly transparent */
+  }
+  
+  .coupon-card h3 {
+    margin-top: 0;
+  }
+  
+  .coupon-card p {
+    margin: 5px 0;
+  }
+  
+  .coupon-card button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 10px; /* Add this line to create a gap between buttons */
+    background-color: rgb(25, 172, 230);
+    color: white;
+    cursor: pointer; /* Ensure the cursor changes to pointer */
+    z-index: 2; /* Ensure the button is above other elements */
+  }
+  
+  .coupon-card button:hover {
+    background-color: #4e8ccd;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: row; /* Ensure forms are side by side */
+    gap: 20px;
+    flex: 0 0 600px; /* Adjust width to accommodate both forms */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    margin-top: 20px;
+    height: fit-content;
+    position: relative;
+    right:50px;
+  }
+  
+  .add-coupon-form, .edit-coupon-form {
+    flex: 1;
+  }
+  
+  .add-coupon-form h3, .edit-coupon-form h3 {
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
+    font-size: 30px;
+  }
+  
+  .add-coupon-form label, .edit-coupon-form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .add-coupon-form input, .edit-coupon-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .add-coupon-form button, .edit-coupon-form button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #28a745;
+    color: #fff;
+    cursor: pointer; /* Ensure the cursor changes to pointer */
+  }
+  
+  .add-coupon-form button:hover, .edit-coupon-form button:hover {
+    background-color: #218838;
+  }
+  
+  .add-coupon-form .active-add-btn, .edit-coupon-form .active-edit-btn {
+    position: relative;
+    bottom: 23px;
+    right: 70px;
+  }
+  
+  .edit-coupon-form {
+    display: block; /* Ensure the form is displayed */
+  }
+  .coupon-list input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    position: relative;
+    margin-top: 20px;
+    left:120px;
+  }

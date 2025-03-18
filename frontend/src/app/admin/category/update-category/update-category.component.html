@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="category-form">
+        <h2>Update Category</h2>
+        <form (ngSubmit)="fetchCategory()" #fetchForm="ngForm">
+            <label for="categoryName">Enter Category Name</label>
+            <input type="text" id="categoryName" [(ngModel)]="categoryName" name="categoryName" required>
+            <div *ngIf="fetchForm.submitted && !categoryName" class="error-message">
+                Category name is required.
+            </div>
+            <button type="submit" [disabled]="fetchForm.invalid">Fetch Category</button>
+        </form>
+
+        <div *ngIf="category">
+            <form (ngSubmit)="updateCategory()" #updateForm="ngForm">
+                <label for="categoryName">Category Name</label>
+                <input type="text" id="categoryName" [(ngModel)]="category.name" name="name" required>
+                <div *ngIf="updateForm.submitted && !category.name" class="error-message">
+                    Category name is required.
+                </div>
+
+                <label for="isActive">
+                    <input type="checkbox" id="isActive" [(ngModel)]="category.isActive" name="isActive"> Is Active
+                </label>
+                <br>
+                <button type="submit" [disabled]="updateForm.invalid">Save</button>
+            </form>
+        </div>
+    </div>
+</div>

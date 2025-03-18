@@ -1,0 +1,38 @@
+<app-admin-header-footer></app-admin-header-footer>
+<div class="users-container">
+    <h2>User Management</h2>
+    <div class="search-container">
+      <select id="role-search" (change)="filterUsersByRole($event)">
+        <option value="" selected>All Roles</option>
+        <option value="admin">Admin</option>
+        <option value="user">User</option>
+      </select>
+      <input type="text" id="username-search" placeholder="Search by username" (input)="filterUsersByUsername($event)">
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>Name</th>
+          <th>Username</th>
+          <th>Mobile</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Role</th>
+          <th>Created Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of filteredUsers">
+          <td>{{ user.userId }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.mobile }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.address }}</td>
+          <td>{{ user.role }}</td>
+          <td>{{ user.createdDate }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

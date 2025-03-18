@@ -1,0 +1,53 @@
+<app-admin-header-footer></app-admin-header-footer>
+<div class="payment-history-container">
+  <h2>Payment Reports</h2>
+  <div class="search-container">
+      <div class="search-item">
+          <select id="paymentMode" [(ngModel)]="selectedPaymentMode" (change)="filterPayments()">
+              <option value="" disabled selected>Filter by Payment Mode</option>
+              <option value="">All</option>
+              <option value="Card">Card</option>
+              <option value="UPI">UPI</option>
+              <option value="Cash">Cash</option>
+              
+          </select>
+      </div>
+      <div class="search-item">
+          <select id="paymentStatus" [(ngModel)]="selectedPaymentStatus" (change)="filterPayments()">
+              <option value="" disabled selected>Filter by Payment Status</option>
+              <option value="">All</option>
+              <option value="Successful">Successful</option>
+              <option value="Pending">Pending</option>
+          </select>
+      </div>
+      <div class="search-item">
+          <input type="text" id="username" [(ngModel)]="selectedUsername" (input)="filterPayments()" placeholder="Filter by Username">
+      </div>
+  </div>
+  <table>
+      <thead>
+          <tr>
+              <th>Payment ID</th>
+              <th>Payment Mode</th>
+              <th>Card No</th>
+              <th>Expiry Date</th>
+              <th>UPI ID</th>
+              <th>Username</th>
+              <th>Final Amount</th>
+              <th>Payment Status</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let payment of filteredPayments">
+              <td>{{ payment.paymentId }}</td>
+              <td>{{ payment.paymentMode }}</td>
+              <td>{{ payment.cardNo }}</td>
+              <td>{{ payment.expiryDate }}</td>
+              <td>{{ payment.upiId }}</td>
+              <td>{{ payment.username }}</td>
+              <td>{{ payment.finalAmount }}</td>
+              <td>{{ payment.paymentStatus }}</td>
+          </tr>
+      </tbody>
+  </table>
+</div>

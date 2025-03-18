@@ -1,0 +1,43 @@
+<app-user-header-footer></app-user-header-footer>
+<div class="query-container">
+  <h2>Send Your Query</h2>
+  <p>If you have any questions or need assistance, feel free to reach out to us!</p>
+  <div class="query-content">
+    <div class="feedback-image">
+      <!-- Add your illustration image here -->
+      <img src="https://github.com/tahimislam/FoodFrenzy_ASP.NET/blob/master/FoodFrenzy/Images/chef.png?raw=true" alt="Login Illustration">
+    </div>
+    <div class="query-form">
+      <form (ngSubmit)="submitFeedback()">
+        <div class="form-group">
+          <label for="fullName"></label>
+          <input type="text" id="fullName" placeholder="Enter Full Name" [(ngModel)]="fullName" name="fullName">
+        </div>
+        <div class="form-group">
+          <label for="email"></label>
+          <input type="email" id="email" placeholder="Enter Email" [(ngModel)]="email" name="email">
+        </div>
+        <div class="form-group">
+          <label for="subject"></label>
+          <select id="subject" [(ngModel)]="subject" name="subject">
+            <option value="" selected>All Issues</option>
+            <option value="Order Issues">Order Issues</option>
+            <option value="Payment Issues">Payment Issues</option>
+            <option value="Website/App Issues">Website/App Issues</option>
+            <option value="Customer Service">Customer Service</option>
+            <option value="Suggestions">Suggestions</option>
+            <option value="Food">Food</option>
+            <option value="Others">Others</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="query"></label>
+          <input type="text" id="query" placeholder="Enter your query / Feedback" [(ngModel)]="query" name="query">
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="query-btn">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

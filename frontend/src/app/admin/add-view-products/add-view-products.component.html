@@ -1,0 +1,78 @@
+<app-admin-header-footer></app-admin-header-footer>
+<div class="container">
+  <div class="product-form">
+    <h2>Product</h2>
+    <form (ngSubmit)="addProduct()" #productForm="ngForm">
+      <label for="productName">Product Name</label>
+      <input type="text" id="productName" [(ngModel)]="product.name" name="name" placeholder="Enter Product Name" required>
+
+      <label for="productDescription">Product Description</label>
+      <input type="text" id="productDescription" [(ngModel)]="product.description" name="description" placeholder="Enter Product Description" required>
+
+      <label for="productPrice">Product Price ($)</label>
+      <input type="number" id="productPrice" [(ngModel)]="product.price" name="price" placeholder="$0.00" required>
+
+      <label for="imageUrl">Product Image URL</label>
+      <input type="text" id="imageUrl" [(ngModel)]="product.imageUrl" name="imageUrl" placeholder="Enter Product Image URL" required>
+
+      <label for="vegNonVeg">Veg/NonVeg</label>
+      <select id="vegNonVeg" [(ngModel)]="product.vegNonVeg" name="vegNonVeg" required>
+        <option value="">Select Type</option>
+        <option value="Veg">Veg</option>
+        <option value="NonVeg">NonVeg</option>
+      </select>
+
+      <label for="category">Category</label>
+      <select id="category" [(ngModel)]="product.categoryId" name="category" required>
+        <option *ngFor="let category of categories" [value]="category.categoryId">{{ category.name }}</option>
+      </select>
+
+      <label for="isActive">
+        <input type="checkbox" id="isActive" [(ngModel)]="product.isActive" name="isActive"> Is Active
+      </label>
+      <br>
+      <div class="form-actions">
+        <button type="submit" id="addBtn">Add</button>
+        <button type="button" id="clearBtn" (click)="clearForm()">Clear</button>
+      </div>
+    </form>
+  </div>
+  <div class="table-container">
+    <h2>Product List</h2>
+    <div class="search-container">
+      <label for="search">Search:</label>
+      <input type="text" id="search" [(ngModel)]="searchTerm" placeholder="Search by product name or category">
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Image</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Veg/NonVeg</th>
+          <th>Category</th>
+          <th>IsActive</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of filteredProducts; trackBy: trackByProductId" [ngClass]="{'active-row': product.isActive, 'inactive-row': !product.isActive}">
+          <td>{{ product.name }}</td>
+          <td><img [src]="product.imageUrl" alt="{{ product.name }}" width="50"></td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.vegNonVeg }}</td>
+          <td>{{ product.categoryName }}</td>
+          <td><button>{{ product.isActive ? 'Active' : 'InActive' }}</button></td>
+          <td>
+            <div class="action-buttons">
+              <button class="edit-btn" (click)="editProduct(product)">Edit</button>
+              <button class="del-btn" (click)="deleteProduct(product)">Delete</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

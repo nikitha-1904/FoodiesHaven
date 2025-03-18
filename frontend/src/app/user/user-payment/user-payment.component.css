@@ -1,0 +1,343 @@
+.container {
+    display: flex;
+    justify-content: space-between; /* Adjust as needed */
+  }
+  
+.coupon-list {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .coupon-cards {
+    display: flex;
+    flex-direction: column; /* Ensure cards are in one column */
+    gap: 15px;
+  }
+  
+  .coupon-card {
+    background-color: #f9f9f9ee;
+    padding: 20px;
+    width: 250px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 13px;
+    border: 1.5px solid #ccc;
+    border-radius: 13px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+    position: relative;
+    z-index: 0; /* Ensure the card is above other elements */
+    margin-top: 20px;
+    left: 50px;
+  }
+  
+  .coupon-card h3 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 17px;
+  }
+  
+  .coupon-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+  }
+  
+  .coupon-card.inactive {
+    background-color: #ffffff; /* Light pale background */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* White shadow */
+    opacity: 0.2; /* Slightly transparent */
+  }
+  
+  .coupon-card h3 {
+    margin-top: 0;
+  }
+  
+  .coupon-card p {
+    margin: 5px 0;
+  }
+  
+  .coupon-card button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 10px; /* Add this line to create a gap between buttons */
+    background-color: rgb(25, 172, 230);
+    color: white;
+    cursor: pointer; /* Ensure the cursor changes to pointer */
+    z-index: 2; /* Ensure the button is above other elements */
+  }
+  
+  .coupon-card button:hover {
+    background-color: #4e8ccd;
+  }
+  
+  .coupon-list input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    position: relative;
+    margin-top: 20px;
+    left: 50px;
+  }
+
+  .coupon-list h2, .payment-result h2, .payment-result h3,.payment-container h2{
+    font-family: 'Dancing Script', cursive; /* Cursive and modern font style */
+    font-weight: bold;
+    font-size: 30px;
+    position: relative;
+    left: 50px;
+
+
+  }
+ 
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  
+  }
+  .payment-container {
+    flex: 1;
+    margin-left: 20px;
+    width: 380px;
+    height: fit-content;
+    padding: 20px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); /* Add shadow effect */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    background-color: #fff; /* Optional: Add background color */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin:40px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    position: relative;
+    right:15px;
+   
+
+}
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333;
+    font-family: 'Dancing Script', cursive;  /* Cursive and modern font style */
+    font-weight: bold;
+    font-size: 30px;
+  }
+  .order-msg {
+    margin-bottom: 10px;
+    color: #333;
+    font-family: 'Brush Script MT', 'Comic Sans MS', 'Segoe Script', cursive;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .payment-methods {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .payment-methods button ,.confirm-order{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 1px;
+    background-color: rgb(25, 172, 230);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    height: 35px;
+  }
+  
+  .payment-methods button:hover, .confirm-order:hover {
+    background-color: #4e8ccd;
+  }
+  .confirm-order{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .order-total{
+    color:white;
+    background-color: #28a745;
+    border-radius: 50px;
+    width:180px;
+    height:30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+  }
+  .payment-methods i {
+    font-size: 1.2em;
+  }
+  
+.order-total .fa-coin {
+  margin-left:10px;
+  color: #FFD700; /* Gold color for the coin icon */
+  
+}
+  .card-details,
+  .upi-details,
+  .cod-details,
+  .delivery-address label,
+  button,
+  .note,
+  #order-total-btn {
+    display: block;
+    width: 100%;
+    margin-top: 0.5em;
+    font-size: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  
+  .delivery-address input {
+    height: 30px;
+    font-size: 14px;
+  }
+  
+  input[type="text"],
+  select {
+    width: 100%; /* Adjusted to fit the container */
+    padding: 12px; /* Adjust the padding to change the height */
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px; /* Adjust the font size to change the height */
+  }
+  
+  input[type="text"]:focus,
+  select:focus {
+    border: 1px solid #ccc;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  button[type="submit"]
+  {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px; /* Adjust the padding to change the height */
+    background-color: rgb(25, 172, 230);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    height: 30px;
+  }
+  
+  button[type="submit"]:hover{
+    background-color: #4e8ccd;
+  }
+  
+  button[type="submit"] i,
+  #order-total-btn i {
+    font-size: 1.2em;
+  }
+  
+  .expiry-date {
+    display: flex;
+    gap: 10px; /* Adjust the gap between the select elements as needed */
+    position: relative; /* Ensure the parent container is positioned relative */
+  }
+  
+  .expiry-date select {
+    width: calc(50% - 5px); /* Adjust the width to fit side by side */
+    height: 35px;
+    padding: 12px; /* Adjust the padding to change the height */
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px; /* Adjust the font size to change the height */
+    position: relative; /* Ensure the select element is positioned relative */
+  }
+  
+  .expiry-date select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    z-index: 1; /* Ensure the focused dropdown is above other elements */
+  }
+  
+  .expiry-date select option {
+    position: absolute; /* Ensure the dropdown options are positioned absolute */
+    top: 100%; /* Position the dropdown options below the select element */
+    left: 0;
+    width: 100%;
+    z-index: 2; /* Ensure the dropdown options are above other elements */
+    font-size: 13px;
+  }
+  
+  .card-details input[type="text"] {
+    height: 40px; /* Adjust the height as needed */
+    padding: 10px; /* Adjust the padding to change the height */
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px; /* Adjust the font size to change the height */
+  }
+  
+  .card-details input[type="text"]:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  #order-total-btn {
+    display: flex;
+    width: 160px;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    background-color: #28a745;  color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    font-size: 14px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  
+  #order-total-btn:hover {
+    background-color: #218838;
+  }
+  .apply-coupon{
+
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 10px; /* Add this line to create a gap between buttons */
+    background-color: rgb(25, 172, 230);
+    color: white;
+  }
+
+  .payment-result{
+
+     
+    width: 380px;
+    height: fit-content;
+    padding: 20px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); /* Add shadow effect */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    background-color: #fff; /* Optional: Add background color */
+    margin:10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    position: relative;
+    top:30px;
+  }

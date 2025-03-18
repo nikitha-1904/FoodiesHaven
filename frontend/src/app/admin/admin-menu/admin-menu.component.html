@@ -1,0 +1,34 @@
+<app-admin-header-footer></app-admin-header-footer>
+<div class="menu">
+  <button id="add-category" (click)="navigateTo('/app-add-category')">Add Category</button>
+  <button id="update-category" (click)="navigateTo('/app-update-category/:name')">Update Category</button>
+  <button id="delete-category" (click)="navigateTo('/app-delete-category/:name')">Delete Category</button>
+</div>
+
+<div class="categories">
+  <span *ngFor="let category of categories" 
+        [class.selected]="category.name === selectedCategory"
+        (click)="selectCategory(category)">
+    {{ category.name }}
+  </span>
+</div>
+
+<div class="toggle-switch">
+  <label>
+    <input type="checkbox" (change)="toggleVegNonVeg($event)">
+    <span class="slider round"></span>
+  </label>
+</div>
+
+<div class="products">
+  <div *ngFor="let product of filteredProducts()" 
+       [class.inactive]="!product.isActive"
+       class="product-card">
+    <img [src]="product.imageUrl" alt="{{ product.name }}">
+    <div class="card-info">
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.description }}</p>
+      <p>{{ product.price | currency :'INR' }}</p>
+    </div>
+  </div>
+</div>

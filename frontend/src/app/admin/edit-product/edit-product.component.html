@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="product-form">
+    <h2>Edit Product</h2>
+    <form (ngSubmit)="saveProduct()">
+      <label for="productName">Product Name</label>
+      <input type="text" id="productName" [(ngModel)]="product.name" name="name">
+
+      <label for="productDescription">Product Description</label>
+      <input type="text" id="productDescription" [(ngModel)]="product.description" name="description">
+
+      <label for="productPrice">Product Price ($)</label>
+      <input type="number" id="productPrice" [(ngModel)]="product.price" name="price">
+
+      <label for="imageUrl">Product Image URL</label>
+      <input type="text" id="imageUrl" [(ngModel)]="product.imageUrl" name="imageUrl">
+
+      <label for="category">Category</label>
+      <select id="category" [(ngModel)]="product.categoryId" name="categoryId">
+        <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+      </select>
+
+      <label for="isActive">
+        <input type="checkbox" id="isActive" [(ngModel)]="product.isActive" name="isActive"> Is Active
+      </label>
+      <br>
+      <button type="submit">Save</button>
+    </form>
+  </div>
+</div>

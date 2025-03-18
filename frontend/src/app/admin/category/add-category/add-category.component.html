@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="category-form">
+        <h2>Add Category</h2>
+        <form (ngSubmit)="saveCategory()" #categoryForm="ngForm">
+            <label for="categoryName">Category Name</label>
+            <input type="text" id="categoryName" [(ngModel)]="category.name" name="name" required>
+            <div *ngIf="categoryForm.submitted && !category.name" class="error-message">
+                Category name is required.
+            </div>
+
+            <label for="isActive">
+                <input type="checkbox" id="isActive" [(ngModel)]="category.isActive" name="isActive"> Is Active
+            </label>
+            <br>
+            <button type="submit" [disabled]="categoryForm.invalid">Save</button>
+        </form>
+    </div>
+</div>

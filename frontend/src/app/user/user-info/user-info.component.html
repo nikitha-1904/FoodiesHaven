@@ -1,0 +1,70 @@
+<app-user-header-footer></app-user-header-footer>
+<div class="user-account-container">
+  <div class="user-account-card" *ngIf="user">
+    <h2>User Account</h2>
+    <div class="user-info-container">
+      <div class="user-info" *ngIf="!isEditing">
+        <p><strong>Name:</strong> {{ user?.name }}</p>
+        <p><strong>Username:</strong> {{ user?.username }}</p>
+        <p><strong>Mobile:</strong> {{ user?.mobile }}</p>
+        <p><strong>Email:</strong> {{ user?.email }}</p>
+        <p><strong>Address:</strong> {{ user?.address?.join(', ') }}</p>
+        <p><strong>Pin Code:</strong> {{ user?.pinCode }}</p>
+        <p><strong>Created Date:</strong> {{ user?.createdDate | date:'yyyy-MM-dd HH:mm:ss' }}</p>
+        <div class="user-account-image">
+          <img src="https://tse1.mm.bing.net/th/id/OIP.FUdWjkE8SPGKm2vSZtahbwHaFL?rs=1&pid=ImgDetMain" alt="User Account Image">
+        </div>
+        <div class="user-info-actions">
+        <button class="edit-btn" (click)="toggleEdit()">Edit</button>
+        <button class="logout" (click)="logout()">Logout</button>
+        <button class="order-history-btn" (click)="navigateToOrderHistory()">Order History</button>
+        </div>
+      </div>
+      
+    </div>
+    <form *ngIf="isEditing" #userForm="ngForm" (ngSubmit)="updateUser()">
+      <div class="user-details">
+        <label>
+          <strong>Name:</strong>
+          <input type="text" [(ngModel)]="user.name" name="name" required />
+        </label><br>
+        <label>
+          <strong>Username:</strong>
+          <input type="text" [(ngModel)]="user.username" name="username" required readonly />
+        </label><br>
+        <label>
+          <strong>Mobile:</strong>
+          <input type="text" [(ngModel)]="user.mobile" name="mobile" required />
+        </label><br>
+        <label>
+          <strong>Email:</strong>
+          <input type="email" [(ngModel)]="user.email" name="email" required />
+        </label><br>
+        <label>
+          <strong>Address:</strong>
+          <input type="text" [(ngModel)]="user.address" name="address" required />
+        </label><br>
+        <label>
+          <strong>Pin Code:</strong>
+          <input type="text" [(ngModel)]="user.pinCode" name="pinCode" required />
+        </label><br>
+        <label>
+          <strong>Password:</strong>
+          <input type="password" [(ngModel)]="user.password" name="password" required />
+        </label><br>
+        <label>
+          <strong>Created Date:</strong>
+          <input type="text" [(ngModel)]="user.createdDate" name="createdDate" readonly />
+        </label><br>
+        <label>
+          <strong>Role:</strong>
+          <input type="text" [(ngModel)]="user.role" name="role" readonly value="user" /> 
+        </label>
+      </div>
+      <div class="user-actions">
+        <button type="submit">Update</button>
+        <button type="button" (click)="toggleEdit()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

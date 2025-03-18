@@ -1,0 +1,77 @@
+<app-user-header-footer></app-user-header-footer>
+<div class="container">
+  <div class="coupon-list">
+    <h2>Available Coupons</h2>
+    <input type="text" placeholder="Search by Coupon Code" [(ngModel)]="searchTerm" (input)="filterCoupons()">
+    <div *ngIf="filteredCoupons.length === 0">No coupons available.</div>
+    <div *ngIf="filteredCoupons.length > 0" class="coupon-cards">
+      <div *ngFor="let coupon of filteredCoupons" class="coupon-card" [ngClass]="{'inactive': !coupon.isActive}" (click)="selectCoupon(coupon)">
+        <h3>{{ coupon.couponCode }}</h3>
+        <p><strong>Description:</strong> {{ coupon.description }}</p>
+        <p><strong>Discount:</strong> {{ coupon.discount }}%</p>
+        <p><strong>Min Order Value:</strong> {{ coupon.minOrderValue }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="payment-container">
+    <div class="payment-form">
+      <h2>Payment Details</h2>
+      <div class="payment-methods">
+        <button (click)="togglePaymentMethod('card')" [class.active]="paymentMethod === 'card'">Card</button>
+        <button (click)="togglePaymentMethod('upi')" [class.active]="paymentMethod === 'upi'">UPI</button>
+        <button (click)="togglePaymentMethod('cash')" [class.active]="paymentMethod === 'cash'">Cash</button>
+      </div>
+      <div *ngIf="paymentMethod === 'card'" class="card-details">
+        <label for="cardNumber">Card Number</label>
+        <input type="text" id="cardNumber" [(ngModel)]="cardNumber" (input)="formatCardNumber($event)" placeholder="1234 5678 9012 3456">
+        <label for="expiryMonth">Expiry Month</label>
+        <select id="expiryMonth" [(ngModel)]="expiryMonth">
+          <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+        </select>
+        <label for="expiryYear">Expiry Year</label>
+        <select id="expiryYear" [(ngModel)]="expiryYear">
+          <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+        </select>
+      </div>
+      <div *ngIf="paymentMethod === 'upi'" class="upi-details">
+        <label for="upiId">UPI ID</label>
+        <input type="text" id="upiId" [(ngModel)]="upiId" placeholder="example@upi">
+      </div>
+      <div class="address-details">
+        <label for="address">Address</label>
+        <div style="position: relative;">
+          <input type="text" id="address" [(ngModel)]="address" placeholder="Enter your address" readonly>
+          <i class="fa fa-edit" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;" (click)="navigateToUserInfo()"></i>
+        </div>
+        <p>If the address needs to be updated, click the edit symbol.</p>
+      </div>
+      <div class="order-summary">
+        <h3>Order Summary</h3>
+        <p class="order-total">
+          <i class="fa fa-coins"></i> Order Total: {{ orderTotal | currency:'INR' }}
+        </p>
+        <label for="couponCode">Coupon Code</label>
+        <input type="text" id="couponCode" [(ngModel)]="couponCode" placeholder="Enter coupon code" disabled>
+      </div>
+      <button class="confirm-order" (click)="confirmOrder()">Confirm Order</button>
+    </div>
+  </div>
+  <form>
+  <div *ngIf="paymentResult" class="payment-result">
+    <h2>Payment Result</h2>
+    <p>{{ paymentResult.status }}</p>
+    <p>{{ paymentResult.message }}</p>
+    <p class="order-msg">Go to the user account Order History for Order Details</p>
+    <p>Grand Total: {{ paymentResult.grandTotal | currency :'INR' }}</p>
+    <p>Discount Amount: {{ paymentResult.discountAmount | currency:'INR'  }}</p>
+    <p>Discounted Amount: {{ paymentResult.discountedAmount | currency :'INR' }}</p>
+    <p>Delivery Charge: {{ paymentResult.deliveryCharge | currency :'INR' }}</p>
+    <p>Final Amount: {{ paymentResult.finalAmount | currency :'INR' }}</p>
+    <p>Payment Mode: {{ paymentResult.paymentMode }}</p>
+    <h3>Cart Items</h3>
+    <div *ngFor="let item of paymentResult.cartItems.items">
+      <p>{{ item.productName }} - {{ item.quantity }} x {{ item.productPrice | currency:'INR'  }}</p>
+    </div>
+  </div>
+  </form>
+</div>

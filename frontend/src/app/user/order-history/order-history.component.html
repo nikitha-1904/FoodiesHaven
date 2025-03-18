@@ -1,0 +1,31 @@
+<app-user-header-footer></app-user-header-footer>
+<div class="container">
+  <h2>Order History</h2>
+  <div class="search-container">
+    <input type="text" placeholder="Search by Order No" [(ngModel)]="searchOrderNo" (input)="filterOrders()">
+    <input type="date" [(ngModel)]="searchDate" (change)="filterOrders()">
+  </div>
+  <div *ngIf="filteredOrders.length === 0">No orders found.</div>
+  <div *ngIf="filteredOrders.length > 0">
+    <ng-container *ngFor="let orderGroup of filteredOrders">
+      <div class="order-card">
+        <h3>{{ orderGroup.orderNo }}</h3>
+        <table class="order-table">
+          <thead>
+            <tr>
+              <th>Product Name</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of orderGroup.orders">
+              <td>{{ order.productName }}</td>
+              <td>{{ order.quantity }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p><strong>Order Placed:</strong> {{ orderGroup.orders[orderGroup.orders.length - 1].orderDate | date:'medium' }}</p>
+      </div>
+    </ng-container>
+  </div>
+</div>

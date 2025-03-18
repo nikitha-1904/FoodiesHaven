@@ -1,0 +1,118 @@
+.cart-container {
+    width: 50%;
+    margin: auto;
+    padding:30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 8px;
+    position: relative;
+    top:30px;
+  }
+  
+  .cart-container h2 {
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #333;
+    font-family: 'Dancing Script', cursive; /* Cursive and modern font style */
+    font-weight: bold;
+    font-size: 30px;
+  }
+  
+  .cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 14px;
+  }
+  
+  .cart-table th, .cart-table td {
+    border-top: 1px solid #ddd; /* Only top border */
+    border-bottom: 1px solid #ddd; /* Only bottom border */
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .cart-table th {
+    background-color: #f2f2f266;
+  }
+  
+  .cart-table img {
+    max-width: 100px;
+    height: 40px;
+    padding: 5px; /* Add padding around the image */
+    
+  }
+  
+  .cart-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .continue-shopping {
+    padding: 8px 10px;
+    background-color: rgb(34, 157, 205);
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+  
+  .continue-shopping:hover {
+    background-color: rgb(9, 178, 245);
+}
+  
+  .checkout {
+    padding: 8px 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+  
+  .checkout:hover {
+    background-color: #218838;
+}
+  
+  .cart-total {
+    margin-top: 20px;
+    text-align: right;
+    font-size: 1.2em;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 16px;
+
+  }
+  .quantity-btn {
+    width: 30px; /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
+    margin: 0 5px; /* Space between buttons */
+    color: black;
+    background-color:#e1e1e1ad;
+    border: none;
+    border-radius: 5%; /* Make buttons round */
+    cursor: pointer;
+  }
+  
+  .quantity-btn:hover {
+    background-color:#e1e1e122
+  }
+  
+  .quantity {
+    display: inline-block;
+    width: 30px; /* Adjust the width as needed */
+    text-align: center;
+  }
+
+  .remove-btn {
+    color: red;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  

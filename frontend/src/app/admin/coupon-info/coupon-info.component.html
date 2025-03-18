@@ -1,0 +1,62 @@
+<app-admin-header-footer></app-admin-header-footer>
+<div class="coupon-content">
+  <div class="coupon-list">
+    <input type="text" placeholder="Search by Coupon Code" [(ngModel)]="searchTerm" (input)="filterCoupons()">
+    <div *ngIf="filteredCoupons.length === 0">No coupons available.</div>
+<div *ngIf="filteredCoupons.length > 0" class="coupon-cards">
+  <div *ngFor="let coupon of filteredCoupons" class="coupon-card" [ngClass]="{'inactive': !coupon.isActive}">
+        <h3>{{ coupon.couponCode }}</h3>
+        <p><strong>Description:</strong> {{ coupon.description }}</p>
+        <p><strong>Discount:</strong> {{ coupon.discount }}%</p>
+        <p><strong>Min Order Value:</strong> {{ coupon.minOrderValue }}</p>
+        <p><strong>Active:</strong> {{ coupon.isActive ? 'Yes' : 'No' }}</p>
+        <button (click)="editCoupon(coupon)">Edit</button>
+        <button (click)="deleteCoupon(coupon.couponCode)">Delete</button>
+      </div>
+    </div>
+  </div>
+  <div class="form-container">
+    <div class="add-coupon-form">
+      <h3>Add Coupon</h3>
+      <form (ngSubmit)="addCoupon()">
+        <label for="couponCode">Coupon Code:</label>
+        <input type="text" id="couponCode" [(ngModel)]="newCoupon.couponCode" name="couponCode" required>
+        
+        <label for="description">Description:</label>
+        <input type="text" id="description" [(ngModel)]="newCoupon.description" name="description" required>
+        
+        <label for="discount">Discount:</label>
+        <input type="number" id="discount" [(ngModel)]="newCoupon.discount" name="discount" required>
+        
+        <label for="minOrderValue">Min Order Value:</label>
+        <input type="number" id="minOrderValue" [(ngModel)]="newCoupon.minOrderValue" name="minOrderValue" required>
+        
+        <label for="isActive">Active:</label>
+        <input type="checkbox" id="isActive" class="active-add-btn" [(ngModel)]="newCoupon.isActive" name="isActive">
+
+        <button type="submit">Add Coupon</button>
+      </form>
+    </div>
+    <div *ngIf="editingCoupon" class="edit-coupon-form">
+      <h3>Edit Coupon</h3>
+      <form (ngSubmit)="updateCoupon()">
+        <label for="editCouponCode">Coupon Code:</label>
+        <input type="text" id="editCouponCode" [(ngModel)]="editingCoupon.couponCode" name="editCouponCode" readonly>
+        
+        <label for="editDescription">Description:</label>
+        <input type="text" id="editDescription" [(ngModel)]="editingCoupon.description" name="editDescription" required>
+        
+        <label for="editDiscount">Discount:</label>
+        <input type="number" id="editDiscount" [(ngModel)]="editingCoupon.discount" name="editDiscount" required>
+        
+        <label for="editMinOrderValue">Min Order Value:</label>
+        <input type="number" id="editMinOrderValue" [(ngModel)]="editingCoupon.minOrderValue" name="editMinOrderValue" required>
+        
+        <label for="editIsActive">Active:</label>
+        <input type="checkbox" id="editIsActive" class="active-edit-btn" [(ngModel)]="editingCoupon.isActive" name="editIsActive">
+
+        <button type="submit">Update Coupon</button>
+      </form>
+    </div>
+  </div>
+</div>

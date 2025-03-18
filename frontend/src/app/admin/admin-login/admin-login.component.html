@@ -1,0 +1,38 @@
+<div class="header">
+  <h1><span class="foodie">Foodie's</span><span class="haven">Haven</span></h1>
+  <nav>
+    <a href="/app-home">HOME</a>
+  </nav>
+</div>
+<div class="login-container">
+  <h2>Admin Login</h2>
+  <div class="login-content">
+    <div class="login-image">
+      <!-- Add your illustration image here -->
+      <img src="https://tse1.mm.bing.net/th/id/OIP.h2kLKowdMTt63OGOdmaD-wHaE8?rs=1&pid=ImgDetMain" alt="Login Illustration">
+    </div>
+    <div class="login-form">
+      <form (ngSubmit)="onLogin()">
+        <div class="form-group">
+          <label for="username"></label>
+          <input type="text" id="username" [(ngModel)]="username" name="username" placeholder="Enter Username">
+        </div>
+        <div class="form-group">
+          <label for="password"></label>
+          <input type="password" id="password" [(ngModel)]="password" name="password" placeholder="Enter Password">
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="login-btn" (click)="onLogin()">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>&copy; 2025 Foodie's Haven. All rights reserved.</p>
+</div>
+
+
+
+

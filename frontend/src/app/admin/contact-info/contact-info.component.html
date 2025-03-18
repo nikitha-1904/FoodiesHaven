@@ -1,0 +1,38 @@
+<app-admin-header-footer></app-admin-header-footer>
+<div class="admin-contact-container">
+  <h2>User Queries</h2>
+  <div class="search-container">
+    <select id="subject-search" (change)="filterQueriesBySubject($event)">
+      <option value="" selected>All Issues</option>
+      <option value="Order Issues">Order Issues</option>
+      <option value="Payment Issues">Payment Issues</option>
+      <option value="Website/App Issues">Website/App Issues</option>
+      <option value="Customer Service">Customer Service</option>
+      <option value="Suggestions">Suggestions</option>
+      <option value="Food">Food</option>
+      <option value="Others">Others</option>
+    </select>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Contact ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Subject</th>
+        <th>Message</th>
+        <th>User ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let query of filteredQueries">
+        <td>{{ query.contactId }}</td>
+        <td>{{ query.name }}</td>
+        <td>{{ query.email }}</td>
+        <td>{{ query.subject }}</td>
+        <td>{{ query.message }}</td>
+        <td>{{ query.userId }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

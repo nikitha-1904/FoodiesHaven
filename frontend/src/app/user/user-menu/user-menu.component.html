@@ -1,0 +1,33 @@
+<app-user-header-footer></app-user-header-footer>
+
+
+<div class="categories">
+  <span *ngFor="let category of categories" 
+        [class.selected]="category.name === selectedCategory"
+        (click)="selectCategory(category)">
+    {{ category.name }}
+  </span>
+</div>
+
+<div class="toggle-switch">
+  <label>
+    <input type="checkbox" (change)="toggleVegNonVeg($event)">
+    <span class="slider round"></span>
+  </label>
+</div>
+
+<div class="products">
+    <div *ngFor="let product of filteredProducts()" 
+         [class.inactive]="!product.isActive"
+         class="product-card">
+      <img [src]="product.imageUrl" alt="{{ product.name }}">
+      <div class="card-info">
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+        <p>{{ product.price | currency :'INR' }}</p>
+        <button (click)="addToCart(product)" class="cart-icon">
+          <i class="fa fa-shopping-cart"></i>
+        </button>
+      </div>
+    </div>
+  </div>
